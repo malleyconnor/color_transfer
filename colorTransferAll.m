@@ -30,11 +30,7 @@ function colorTransferAll(src_im_path, tgt_im_path, output_path)
 
     % Applying colorTransfer to each combination of src/tgt images
     for j=1:length(src_ims)
-        for k=1:length(tgt_ims)
-            if (j == k)
-               continue 
-            end
-            
+        for k=1:length(tgt_ims)       
             out_file = sprintf('%ssrc_%stgt.jpg', src_im_names{j}, tgt_im_names{k});
             
             I = colorTransfer(fullfile(src_im_path, src_ims{j}), ...

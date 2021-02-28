@@ -58,8 +58,8 @@ function I=colorTransfer(source_im_path, target_im_path, output_path)
     % Normalizing, rounding, and casting to uint8
     for j=1:size(I, 2)
        % Max/min val of src img
-       maxVal = max(tgt_flattened(:,j));
-       minVal = min(tgt_flattened(:,j));
+       maxVal = max(src_flattened(:,j));
+       minVal = min(src_flattened(:,j));
        I(:,j) = normalize(I(:,j), 'range', [minVal, maxVal]); 
     end
     I = uint8(round(I));
