@@ -1,4 +1,4 @@
-# eel5820_hw3
+# color_transfer
 
 To run, use the colorTransferAll wrapper script with no arguments.
 This will create every combination of image using images from the src_images
