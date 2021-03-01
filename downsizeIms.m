@@ -1,4 +1,19 @@
 function downsizeIms(src_im_path, tgt_im_path)
+%colorTransfer
+%
+%   Description: Downscales all images in the src_im_path and tgt_im_path
+%   to a square image of the minimum size between the two directories. All
+%   images must have the format im000.jpg, im001.jpg, etc... Outputs images
+%   started with "cropped" in the same directories.
+%
+%   Inputs:
+%       src_im_path (str) - path to source image directory.
+%
+%       tgt_im_path (str) - path to target image directory.
+%
+%
+%   Returns: n/a
+%
     src_ims = {dir(fullfile(src_im_path, '/im*')).name};
     tgt_ims = {dir(fullfile(tgt_im_path, '/im*')).name};
     
@@ -27,7 +42,7 @@ function downsizeIms(src_im_path, tgt_im_path)
     end
     
     output_res = [min_size min_size];
-    
+    disp(min_size)
     % Resizing src images
     for j=1:length(src_ims)
         im_j = imread(fullfile(src_im_path, src_ims{j}));

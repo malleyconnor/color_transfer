@@ -1,4 +1,18 @@
 function I=colorTransfer(source_im_path, target_im_path, output_path)
+%colorTransfer
+%
+%   Description: Transfers the colors of one src image to a target image.
+%
+%   Inputs:
+%       source_im_path (str) - path to source image.
+%
+%       tgt_im_path (str) - path to target image
+%
+%       output_path (srt) - desired path to output image
+%
+%   Returns:
+%       I (array) - Array containing the RGB output image
+%
     src_im = double(imread(source_im_path));
     tgt_im = double(imread(target_im_path));
     
@@ -44,12 +58,11 @@ function I=colorTransfer(source_im_path, target_im_path, output_path)
     S_tgt = eye(4);
     S_tgt = S_tgt.*diag(1./sqrt([diag(lambda_tgt); 1]));
     
-    
     % Applying filter...
     I_tgt = tgt_flattened;
     I_tgt(:,4) = ones(size(I_tgt,1),1);
     
-    
+    % Applying the color transfer
     I = (T_src*R_src*S_src*S_tgt*R_tgt*T_tgt*I_tgt')';
     
     % Getting rid of the dummy variable...
@@ -67,6 +80,8 @@ function I=colorTransfer(source_im_path, target_im_path, output_path)
     % Reshaping image to 2D
     I = reshape(I, [size(src_im, 1) size(src_im, 2) 3]);
 
+    
+    
     
     % Displaying images
     f = figure();set(gcf, 'Visible', 'off');set(gcf, 'DefaultAxesPosition', [0.1, 0.1, 0.8, 0.8]);

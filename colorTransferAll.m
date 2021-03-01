@@ -1,4 +1,20 @@
-function colorTransferAll(src_im_path, tgt_im_path, output_path)
+ function colorTransferAll(src_im_path, tgt_im_path, output_path)
+%colorTransferAll
+%
+%   Description: Transfers the colors of all images in the src_im_path directory
+%                to all images in the tgt_im_path directory.
+%
+%   Inputs:
+%       src_im_path (str) - path to directory containing source images, all
+%       starting with "cropped"
+%
+%       tgt_im_path (str) - path to directory containing target images, all
+%       starting with "cropped"
+%
+%       output_path (srt) - path to output directory
+%
+%   Returns: n/a
+%
     if ~exist('output_path', 'var')
         output_path = './output_images/';
     end
